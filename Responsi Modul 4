@@ -1,3 +1,36 @@
-//Tugas modul 4
-//Ini file untuk tugas reponsi
-//Kelompok 15
+abjad = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+
+key = int(15)
+
+def header():
+    print("===============================================================")
+    print (" Selamat Datang di Program Enkripsi dan Dekripsi Kelompok 15")
+    print("===============================================================")
+    print("\n")
+header()
+
+kalimat = input('Silahkan masukkan teks: ')
+
+
+def enkripsi(kalimat,cipher_key):
+  kalimat = kalimat.lower()
+  hasil_enkripsi = ''
+  for karakter in kalimat:
+    if karakter in abjad:
+      index_lama = abjad.index(karakter)
+      index_baru = (index_lama + cipher_key ) % len(abjad)
+      abjad_baru = abjad[index_baru]
+      hasil_enkripsi = hasil_enkripsi + abjad_baru 
+    else:
+       hasil_enkripsi = hasil_enkripsi + ' ' 
+  return hasil_enkripsi
+
+
+print("\nPilih proses yang ingin dilakukan: ")
+print("1. Enkripsi \n2. Deskripsi")
+pilih = int(input("Masukan pilihanmu: "))
+
+if pilih == 1:
+    kalimat_hasil = enkripsi(kalimat,key)
+    print('Teks yang dimasukkan adalah:',kalimat)
+    print('Hasil enkripsi adalah ', kalimat_hasil)
